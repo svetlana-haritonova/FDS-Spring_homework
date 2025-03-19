@@ -10,5 +10,14 @@ import java.util.List;
 @Service
 @Getter
 public class CurrencyService {
+    private final List<Currency> currencies = new ArrayList<>();
 
+    public void addCurrency(Currency currency) {
+        currencies.add(currency);
+        return;
+    }
+
+    public boolean deleteCurrency(String id) {
+        return currencies.removeIf(currency -> currency.getId().equals(id));
+    }
 }

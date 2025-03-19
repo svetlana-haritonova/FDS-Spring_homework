@@ -7,5 +7,8 @@ import lombok.Setter;
 @Setter
 
 public class CurrencyRequest {
-
+    private String name;
+    private String baseCurrency;
+    private String priceChangeRange;
+    private String description;
 }
