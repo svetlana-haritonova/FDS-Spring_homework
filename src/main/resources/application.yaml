@@ -1,0 +1,6 @@
+server:
+  port: 8069
+
+spring:
+  application:
+    name: FDS-Spring
