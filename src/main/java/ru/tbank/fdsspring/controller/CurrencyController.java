@@ -57,17 +57,6 @@ public class CurrencyController {
 
     @PutMapping("/{id}")
     public ResponseEntity<String> updateCurrency(@PathVariable String id, @RequestBody CurrencyRequest currencyRequest) {
-        for (Currency currency : currencyService.getCurrencies()) {
-            if (currency.getId().equals(id)) {
-                currency.setName(currencyRequest.getName());
-                currency.setBaseCurrency(currencyRequest.getBaseCurrency());
-                currency.setPriceChangeRange(currencyRequest.getPriceChangeRange());
-                currency.setDescription(currencyRequest.getDescription());
-                return ResponseEntity
-                        .status(HttpStatus.OK)
-                        .body("Данные валюты успешно обновлены");
-            }
-        }
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body("Валюта не найдена");
