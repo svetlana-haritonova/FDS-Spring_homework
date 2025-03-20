@@ -25,19 +25,6 @@ public class CurrencyController {
 
     @PostMapping
     public ResponseEntity<String> addCurrency(@RequestBody CurrencyRequest currencyRequest) {
-        Currency currency = new Currency();
-        if (currencyRequest.getName().isEmpty() ||
-                currencyRequest.getBaseCurrency().isEmpty() ||
-                currencyRequest.getPriceChangeRange().isEmpty()) {
-            return ResponseEntity
-                    .status(HttpStatus.OK)
-                    .body("Неккоректные данные в запросе");
-        }
-        currency.setName(currencyRequest.getName());
-        currency.setBaseCurrency(currencyRequest.getBaseCurrency());
-        currency.setPriceChangeRange(currencyRequest.getPriceChangeRange());
-        currency.setDescription(currencyRequest.getDescription());
-        currencyService.addCurrency(currency);
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body("Валюта успешно добавлена");
