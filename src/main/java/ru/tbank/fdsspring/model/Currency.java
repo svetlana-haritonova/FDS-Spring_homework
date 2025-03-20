@@ -8,5 +8,9 @@ import lombok.Setter;
 @Setter
 
 public class Currency {
-
+    private String id;
+    private String name;
+    private String baseCurrency;
+    private String priceChangeRange;
+    private String description;
 }

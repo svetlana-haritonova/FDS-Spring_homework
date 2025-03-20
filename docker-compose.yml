@@ -7,7 +7,7 @@ services:
     networks:
       - app_network
     ports:
-      - "8069:8069"
+      - 8080:8080
     depends_on:
       - db
 
