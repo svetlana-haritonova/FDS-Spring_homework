@@ -3,11 +3,11 @@ version: '3.0'
 services:
   app:
     build: .
-    container_name: user-service
-    networks:
-      - app_network
+#    container_name: user-service
+#    networks:
+#      - app_network
     ports:
-      - 8080:8080
+      - "8080:8080"
     depends_on:
       - db
 

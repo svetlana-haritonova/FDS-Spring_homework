@@ -34,7 +34,9 @@ public class CurrencyController {
     public ResponseEntity<String> getCurrency(@PathVariable String id) {
         for (Currency currency : currencyService.getCurrencies()) {
             if (currency.getId().equals(id)) {
-                return ResponseEntity.ok(currency.toString());
+                return ResponseEntity
+                        .status(HttpStatus.OK)
+                        .body("Валюта найдена");
             }
         }
         return ResponseEntity
