@@ -1,23 +1,68 @@
 package ru.tbank.fdsspring.service;
 
-import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.tbank.fdsspring.model.Currency;
+import ru.tbank.fdsspring.model.CurrencyRequest;
+import ru.tbank.fdsspring.repository.CurrencyRepository;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
-@Getter
+@RequiredArgsConstructor
 public class CurrencyService {
-    private final List<Currency> currencies = new ArrayList<>();
 
-    public void addCurrency(Currency currency) {
-        currencies.add(currency);
-        return;
+    private final CurrencyRepository currencyRepository;
+
+    @Transactional(readOnly = true)
+    public List<Currency> getCurrencies() {
+        return currencyRepository.findAllCurrencies().collect(Collectors.toList());
     }
 
-    public boolean deleteCurrency(String id) {
-        return currencies.removeIf(currency -> currency.getId().equals(id));
+    @Transactional
+    public void addCurrency(CurrencyRequest currencyRequest) {
+        Currency currency = new Currency();
+        currency.setName(currencyRequest.getName());
+        currency.setBaseCurrency(currencyRequest.getBaseCurrency());
+        currency.setPriceChangeRange(currencyRequest.getPriceChangeRange());
+        currency.setDescription(currencyRequest.getDescription());
+        currencyRepository.save(currency);
+    }
+
+    @Transactional
+    public Currency updateCurrency(Long id, CurrencyRequest currencyRequest) {
+        Currency updateCurrency = currencyRepository.findById(id).orElse(null);
+        if (updateCurrency != null) {
+            updateCurrency.setName(currencyRequest.getName());
+            updateCurrency.setBaseCurrency(currencyRequest.getBaseCurrency());
+            updateCurrency.setPriceChangeRange(currencyRequest.getPriceChangeRange());
+            updateCurrency.setDescription(currencyRequest.getDescription());
+            return updateCurrency;
+        } else {
+            return null;
+        }
+    }
+
+    @Transactional(readOnly = true)
+    public Currency getCurrencyById(Long id) {
+        return currencyRepository.findById(id).orElseThrow(() -> new RuntimeException((String) null));
+    }
+
+    public boolean isCurrencyEmpty(Currency currency) {
+        return (currency == null ||
+                currency.getId() == null ||
+                currency.getName() == null ||
+                currency.getBaseCurrency() == null ||
+                currency.getPriceChangeRange() == null ||
+                currency.getDescription() == null);
+    }
+
+
+    @Transactional
+    public void deleteCurrency(Long id) {
+        currencyRepository.deleteById(id);
     }
 }
