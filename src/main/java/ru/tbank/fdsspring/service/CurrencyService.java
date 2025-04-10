@@ -34,21 +34,17 @@ public class CurrencyService {
 
     @Transactional
     public Currency updateCurrency(Long id, CurrencyRequest currencyRequest) {
-        Currency updateCurrency = currencyRepository.findById(id).orElse(null);
-        if (updateCurrency != null) {
-            updateCurrency.setName(currencyRequest.getName());
-            updateCurrency.setBaseCurrency(currencyRequest.getBaseCurrency());
-            updateCurrency.setPriceChangeRange(currencyRequest.getPriceChangeRange());
-            updateCurrency.setDescription(currencyRequest.getDescription());
-            return updateCurrency;
-        } else {
-            return null;
-        }
+        Currency updateCurrency = currencyRepository.findById(id).orElseThrow(() -> new RuntimeException("Currency not found"));
+        updateCurrency.setName(currencyRequest.getName());
+        updateCurrency.setBaseCurrency(currencyRequest.getBaseCurrency());
+        updateCurrency.setPriceChangeRange(currencyRequest.getPriceChangeRange());
+        updateCurrency.setDescription(currencyRequest.getDescription());
+        return currencyRepository.save(updateCurrency);
     }
 
     @Transactional(readOnly = true)
     public Currency getCurrencyById(Long id) {
-        return currencyRepository.findById(id).orElseThrow(() -> new RuntimeException((String) null));
+        return currencyRepository.findById(id).orElseThrow(() -> new RuntimeException("Currency not found"));
     }
 
     @Transactional
