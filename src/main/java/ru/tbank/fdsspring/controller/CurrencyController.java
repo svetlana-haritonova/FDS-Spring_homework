@@ -9,7 +9,6 @@ import ru.tbank.fdsspring.model.CurrencyRequest;
 import ru.tbank.fdsspring.service.CurrencyService;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/currencies")
