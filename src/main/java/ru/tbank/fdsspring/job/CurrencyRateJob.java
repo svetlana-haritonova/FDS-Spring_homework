@@ -46,12 +46,12 @@ public class CurrencyRateJob {
         return rates.stream()
                 .filter(rate -> changeRanges.containsKey(rate.getCode()))
                 .filter(rate -> {
-                    double actual = percentChange(rate);
+                    double actualPercent = percentChange(rate);
                     double range  = changeRanges.get(rate.getCode());
                     if (range >= 0) {
-                        return actual >= range;
+                        return actualPercent >= range;
                     } else {
-                        return actual <= range;
+                        return actualPercent <= range;
                     }
                 })
                 .toList();
