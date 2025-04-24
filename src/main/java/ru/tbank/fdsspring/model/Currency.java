@@ -1,4 +1,4 @@
-package ru.tbank.fdsspring.entity;
+package ru.tbank.fdsspring.model;
 
 
 import jakarta.persistence.Entity;

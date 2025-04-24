@@ -3,8 +3,9 @@ package ru.tbank.fdsspring.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
-import ru.tbank.fdsspring.entity.Currency;
+import ru.tbank.fdsspring.model.Currency;
 
+import java.util.List;
 import java.util.stream.Stream;
 
 

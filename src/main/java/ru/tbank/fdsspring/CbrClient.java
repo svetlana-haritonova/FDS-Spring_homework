@@ -1,13 +1,14 @@
-package ru.tbank.fdsspring.service;
+package ru.tbank.fdsspring;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 import ru.tbank.fdsspring.config.CurrencyConfig;
-import ru.tbank.fdsspring.model.CurrencyRateDto;
+import ru.tbank.fdsspring.CurrencyRateDto;
 
 import java.util.*;
 
