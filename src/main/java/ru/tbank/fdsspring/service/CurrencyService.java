@@ -3,7 +3,7 @@ package ru.tbank.fdsspring.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.tbank.fdsspring.model.Currency;
+import ru.tbank.fdsspring.entity.Currency;
 import ru.tbank.fdsspring.model.CurrencyRequest;
 import ru.tbank.fdsspring.repository.CurrencyRepository;
 

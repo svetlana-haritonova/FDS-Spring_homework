@@ -1,4 +1,4 @@
-package ru.tbank.fdsspring;
+package ru.tbank.fdsspring.model;
 
 import lombok.*;
 
