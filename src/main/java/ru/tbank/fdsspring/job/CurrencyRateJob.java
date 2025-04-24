@@ -1,10 +1,12 @@
-package ru.tbank.fdsspring;
+package ru.tbank.fdsspring.job;
 
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
-import ru.tbank.fdsspring.model.Currency;
+import ru.tbank.fdsspring.service.CbrClient;
+import ru.tbank.fdsspring.model.CurrencyRateDto;
+import ru.tbank.fdsspring.entity.Currency;
 import ru.tbank.fdsspring.service.CurrencyService;
 
 import java.util.List;
