@@ -8,6 +8,7 @@ import ru.tbank.fdsspring.model.CurrencyRequest;
 import ru.tbank.fdsspring.repository.CurrencyRepository;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
