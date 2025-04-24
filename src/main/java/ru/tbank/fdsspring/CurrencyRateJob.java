@@ -22,12 +22,12 @@ public class CurrencyRateJob {
     @Scheduled(cron = "0 0 * * * *")       // каждый час
     public void processRates() {
         List<CurrencyRateDto>  allRates   = cbrClient.fetchRates();
-        Map<String, Double> changeRanges = collectChangeRanges();
+        Map<String, Double> changeRanges = сollectChangeRanges();
         List<CurrencyRateDto>  rates   = getSuitableRates(allRates, changeRanges);
         rates.forEach(this::printNotify);
     }
 
-    private Map<String, Double> collectChangeRanges() {
+    private Map<String, Double> сollectChangeRanges() {
         return currencyService.getCurrencies().stream()
                 .filter(c -> c.getPriceChangeRange() != null
                         && !c.getPriceChangeRange().isBlank())
