@@ -25,4 +25,10 @@ public class Currency {
     private String priceChangeRange;
     private String description;
 
+    public Currency(String name, String baseCurrency, String priceChangeRange, String description) {
+        this.name = name;
+        this.baseCurrency = baseCurrency;
+        this.priceChangeRange = priceChangeRange;
+        this.description = description;
+    }
 }

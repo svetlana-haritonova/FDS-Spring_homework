@@ -51,6 +51,16 @@ public class CurrencyService {
         return currencyRepository.findById(id).orElseThrow(() -> new RuntimeException((String) null));
     }
 
+    public boolean isCurrencyEmpty(Currency currency) {
+        return (currency == null ||
+                currency.getId() == null ||
+                currency.getName() == null ||
+                currency.getBaseCurrency() == null ||
+                currency.getPriceChangeRange() == null ||
+                currency.getDescription() == null);
+    }
+
+
     @Transactional
     public void deleteCurrency(Long id) {
         currencyRepository.deleteById(id);
