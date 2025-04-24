@@ -21,7 +21,7 @@ public class CurrencyRateJob {
     private final CurrencyService currencyService;
 
     @PostConstruct
-    @Scheduled(cron = "0 0 * * * *")       // каждый час
+    @Scheduled(cron = "0 0 * * * *")
     public void processRates() {
         List<CurrencyRateDto>  allRates   = cbrClient.fetchRates();
         Map<String, Double> changeRanges = collectChangeRanges();
