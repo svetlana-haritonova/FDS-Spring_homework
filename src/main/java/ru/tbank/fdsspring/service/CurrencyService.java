@@ -8,7 +8,6 @@ import ru.tbank.fdsspring.model.CurrencyRequest;
 import ru.tbank.fdsspring.repository.CurrencyRepository;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -18,7 +17,7 @@ public class CurrencyService {
 
     @Transactional(readOnly = true)
     public List<Currency> getCurrencies() {
-        return currencyRepository.findAllCurrencies().collect(Collectors.toList());
+        return currencyRepository.findAll();
     }
 
     @Transactional
@@ -43,7 +42,7 @@ public class CurrencyService {
 
     @Transactional(readOnly = true)
     public Currency getCurrencyById(Long id) {
-        return currencyRepository.findById(id).orElseThrow(() -> new RuntimeException("Currency not found"));
+        return currencyRepository.findById(id).orElse(null);
     }
 
     @Transactional
