@@ -33,12 +33,11 @@ public class CurrencyController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Currency> getCurrency(@PathVariable Long id) {
-        for (Currency currency : currencyService.getCurrencies()) {
-            if (currency.getId().equals(id)) {
-                return ResponseEntity
-                        .status(HttpStatus.OK)
-                        .body(currency);
-            }
+        Currency currency = currencyService.getCurrencyById(id);
+        if (currency != null) {
+            return ResponseEntity
+                    .status(HttpStatus.OK)
+                    .body(currency);
         }
         return ResponseEntity
                 .status(HttpStatus.NOT_FOUND)
