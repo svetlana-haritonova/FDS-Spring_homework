@@ -25,7 +25,7 @@ public class CurrencyRateJob {
     public void processRates() {
         List<CurrencyRateDto>  allRates   = cbrClient.fetchRates();
         Map<String, Double> changeRanges = collectChangeRanges();
-        List<CurrencyRateDto>  rates   = getSuitableRates(allRates, changeRanges);
+        List<CurrencyRateDto> rates = getSuitableRates(allRates, changeRanges);
         rates.forEach(this::printNotify);
     }
 
